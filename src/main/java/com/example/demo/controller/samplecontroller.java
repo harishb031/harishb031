@@ -24,4 +24,10 @@ public class samplecontroller {
         //what we achieved here is whatever we are passing in the path after /harish its taking as a variable
         //and to achieve this we are using pathvariable annotttaion in our function
     }
+    @GetMapping("/nayi")
+    public int harish()
+    {
+        System.out.println("harish");
+        return 1;
+    }
 }
