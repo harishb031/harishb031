@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter // to access private attributes we use getter and setter and this annottaion is coming from lambok
 @Setter
 public class Category extends Baseclass {
-    private long id;
-    private String title;
+    private long catid;
+    private String cattitle;
     private String description;
     private Category category;
 

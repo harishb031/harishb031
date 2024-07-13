@@ -12,4 +12,5 @@ public class Baseclass {
     private long id;
     private Date updated_at;
     private Date created_at;
+    private Category category;
 }
