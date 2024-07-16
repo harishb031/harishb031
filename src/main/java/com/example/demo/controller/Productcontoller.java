@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.Services.Productservice;
 import com.example.demo.models.Products;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,9 +26,20 @@ public class Productcontoller {
     }
 
     @GetMapping("/{id}")
-    public Products getproductbyid(@PathVariable ("id") long id) // here we are expecting output of Products
+    public ResponseEntity<Products> getproductbyid(@PathVariable ("id") long id) // here we are expecting output of Products
     {
-           return productservice.getsingleproduct(id);
+        ResponseEntity<Products> responseEntity = null;
+        try {
+            Products products = productservice.getsingleproduct(id);
+            responseEntity = new ResponseEntity<>(products, HttpStatus.OK);
+        }
+        catch (RuntimeException e)
+        {
+             responseEntity = new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+        }
+
+
+           return responseEntity;
     }
     @GetMapping()
     public List<Products> getproducts()
