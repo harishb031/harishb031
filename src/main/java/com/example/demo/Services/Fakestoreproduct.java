@@ -4,10 +4,12 @@ import com.example.demo.Dtos.Fakestoreproductdtos;
 import com.example.demo.models.Category;
 import com.example.demo.models.Products;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpMessageConverterExtractor;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +29,20 @@ public class Fakestoreproduct implements Productservice{
         //inthis ex we have to call fakestore
     }
     public Products getsingleproduct(long id) {
-     // Fakestoreproductdtos fakestoreproductdtos = restTemplate.getForObject("https://fakestoreapi.com/products/"+id, Fakestoreproductdtos.class);
+    Fakestoreproductdtos fakestoreproductdtos = restTemplate.getForObject("https://fakestoreapi.com/products/"+id, Fakestoreproductdtos.class);
     //getforobject is a in built method that gives output and we are calling that using Resttemplate
     //.class tell that out put need to be in that class type
 
     //now we need to convert fakestore object into product type because thats our output format as mentioned in class
 //createproduct is created for conversion
-        //return createproduct(fakestoreproductdtos);
-        throw new RuntimeException("Not implemented yet");
+
+        if (fakestoreproductdtos == null)
+        {
+
+        }
+       return createproduct(fakestoreproductdtos);
+// throw new ArithmeticException();        //throw new ArithmeticException();
+
     }
 
 
