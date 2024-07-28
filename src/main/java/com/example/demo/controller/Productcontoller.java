@@ -6,6 +6,7 @@ import com.example.demo.models.Products;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -56,6 +57,17 @@ public class Productcontoller {
     public Products updateproduct(@PathVariable("id") long id, @RequestBody Products products) {
         return productservice.updateproduct(id, products);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteproduct(@PathVariable("id") long id) {
+        productservice.deleteproduct(id);
+    }
+
+    @PostMapping()
+    public Products addproduct(@RequestBody Products products) {
+        return productservice.addproduct(products);
+    }
+
 
     //public Products replaceproduct(long id,Products)
 // if u want exception to be specific to specific contoller then we have to write code in controller like below

@@ -14,7 +14,7 @@ import java.util.Date;
 public class Baseclass {
    @Id //to tell its a primary key
    @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto increment
-    private long id;
+    private Long id;
     private Date updated_at;
     private Date created_at;
     }

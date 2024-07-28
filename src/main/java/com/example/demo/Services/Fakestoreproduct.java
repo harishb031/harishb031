@@ -36,10 +36,7 @@ public class Fakestoreproduct implements Productservice{
     //now we need to convert fakestore object into product type because thats our output format as mentioned in class
 //createproduct is created for conversion
 
-        if (fakestoreproductdtos == null)
-        {
 
-        }
        return createproduct(fakestoreproductdtos);
 // throw new ArithmeticException();        //throw new ArithmeticException();
 
@@ -63,6 +60,16 @@ public class Fakestoreproduct implements Productservice{
         HttpMessageConverterExtractor<Fakestoreproductdtos> responseExtractor = new HttpMessageConverterExtractor(Fakestoreproductdtos.class, restTemplate.getMessageConverters());
         Fakestoreproductdtos response = restTemplate.execute("https://fakestoreapi.com/products/"+id, HttpMethod.PATCH, requestCallback, responseExtractor);
          return createproduct(response);
+    }
+
+    @Override
+    public void deleteproduct(long id) {
+
+    }
+
+    @Override
+    public Products addproduct(Products products) {
+        return null;
     }
 
     public Products createproduct(Fakestoreproductdtos fakestoreproductdtos) {
