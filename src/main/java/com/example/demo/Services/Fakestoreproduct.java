@@ -68,6 +68,11 @@ public class Fakestoreproduct implements Productservice{
     }
 
     @Override
+    public Products updatepostproduct(long id, Products products) {
+        return null;
+    }
+
+
     public Products addproduct(Products products) {
         return null;
     }

@@ -11,5 +11,7 @@ public interface Productservice {
      List<Products> getallproducts();
      Products updateproduct(long id,Products product);
      void deleteproduct(long id);
-     Products addproduct(@RequestBody Products products);
+     Products updatepostproduct(long id, Products products);
+
+     Products addproduct(Products products);
 }

@@ -69,6 +69,11 @@ public class Productcontoller {
     }
 
 
+    @PutMapping("/{id}")
+    public Products updatepostproduct(@PathVariable("id") long id, @RequestBody Products products) {
+        return productservice.updatepostproduct(id, products);
+    }
+
     //public Products replaceproduct(long id,Products)
 // if u want exception to be specific to specific contoller then we have to write code in controller like below
     @ExceptionHandler(NoResourceFoundException.class)

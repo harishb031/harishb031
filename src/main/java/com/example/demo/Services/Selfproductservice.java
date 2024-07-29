@@ -42,7 +42,25 @@ public class Selfproductservice implements Productservice{
 
 
     public Products updateproduct(long id, Products product) {
-        return null;
+Optional<Products> productsOptional1 = productRepo.findById(id);
+        if (productsOptional1.isEmpty())
+        {
+            throw new RuntimeException();
+        }
+        Products products1 = productsOptional1.get();
+        if (product.getId() !=null)
+        {
+            products1.setId(product.getId());
+        }
+        if (product.getName() !=null)
+        {
+            products1.setName(product.getName());
+        }
+
+            products1.setPrice(product.getPrice());
+
+
+        return productRepo.save(products1);
     }
 
 
@@ -72,4 +90,21 @@ public class Selfproductservice implements Productservice{
 
         return productRepo.save(products);
     }
-}
+
+
+    public Products updatepostproduct(long id, Products product) {
+        Optional<Products> productsOptional1 = productRepo.findById(id);
+        if (productsOptional1.isEmpty()) {
+            throw new RuntimeException();
+        }
+        Products products1 = productsOptional1.get();
+
+
+        if (product.getName() != null) {
+            products1.setName(product.getName());
+        }
+
+        products1.setPrice(product.getPrice());
+       return products1;
+    }
+    }
