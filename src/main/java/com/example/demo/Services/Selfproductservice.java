@@ -5,8 +5,11 @@ import com.example.demo.Repo.ProductRepo;
 import com.example.demo.models.Category;
 import com.example.demo.models.Products;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +36,9 @@ public class Selfproductservice implements Productservice{
     }
 
 
-    public List<Products> getallproducts() {
-        List<Products> productsList = productRepo.findAll();
+    public Page<Products> getallproducts(int Pagenumber,int pagesize ) {
+        Page<Products> productsList = productRepo.findAll(
+        PageRequest.of(Pagenumber,pagesize));
 
         return productsList;
 
@@ -77,16 +81,16 @@ Optional<Products> productsOptional1 = productRepo.findById(id);
 
         // when we are passing request body which contains non existent category id then we get persistent error
         //to avoid that error we have to check category id is avaiable or not
-        //if its not available then we have to save category object first and we have to
-
-        Category category = products.getCategory();
+        //if its not available then we have to save category object first (below code) or we have to mention CaSCade in products
+       //Below code is only required when we are not using CASCADE in product class
+      /*  Category category = products.getCategory();
         if (category.getId() == null)
         {
             // here savedcategory contains id because its passed through save method;
             Category savedcategory = categoryRepo.save(category);
            products.setCategory(savedcategory);
         }
-
+            */
 
         return productRepo.save(products);
     }

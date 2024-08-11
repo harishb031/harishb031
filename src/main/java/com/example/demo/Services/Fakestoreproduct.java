@@ -3,6 +3,7 @@ package com.example.demo.Services;
 import com.example.demo.Dtos.Fakestoreproductdtos;
 import com.example.demo.models.Category;
 import com.example.demo.models.Products;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,11 @@ public class Fakestoreproduct implements Productservice{
        return createproduct(fakestoreproductdtos);
 // throw new ArithmeticException();        //throw new ArithmeticException();
 
+    }
+
+    @Override
+    public Page<Products> getallproducts(int page, int size) {
+        return null;
     }
 
 
@@ -84,7 +90,7 @@ public class Fakestoreproduct implements Productservice{
         product.setPrice(fakestoreproductdtos.getPrice());
         Category category = new Category();
         category.setDescription(fakestoreproductdtos.getCategory());
-        product.setCategory(category);
+      product.setCategory(category);
         return product;
     }
 }

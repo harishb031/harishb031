@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.Dtos.Exceptiondtos;
 import com.example.demo.Services.Productservice;
 import com.example.demo.models.Products;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -48,9 +49,9 @@ public class Productcontoller {
     }
 
     @GetMapping()
-    public List<Products> getproducts() {
+    public Page<Products> getproducts(@RequestParam("pagenumber") int pagenumber, @RequestParam("pagesize") int pagesize) {
 
-        return productservice.getallproducts();
+        return productservice.getallproducts(pagenumber, pagesize);
     }
 
     @PatchMapping("/{id}")

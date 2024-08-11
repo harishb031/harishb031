@@ -1,6 +1,8 @@
 package com.example.demo.Repo;
 
 import com.example.demo.models.Products;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +13,7 @@ public interface ProductRepo extends JpaRepository<Products, Long> {
 
     Optional<Products> findById(Long id);
 
-    List<Products> findAll();
+    Page<Products> findAll(Pageable pageable);
 
     void deleteById(long id);
 
